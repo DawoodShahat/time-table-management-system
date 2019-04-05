@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			{% if title %}
+				{{ title }}
+			{% else %}
+				Welcome to TTMS
+			{% endif %}	
+		</title>
+		{% block script %}
+		{% endblock %}
+		<link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" type="text/css">
+		{% block link %}
+		<link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet" type="text/css">
+		{% endblock %}
+	</head>
+
+	<body>
+		<div class="header">
+			<h1>Time Table Management System</h1>
+		</div>
+		<div class='container'>
+			<div class='aside'>
+				{% block aside %}
+				{% endblock %}
+			</div>
+		{% block maincontent %}
+			<div class='container-child'>
+				<div class='description-wrapper'>
+					<h1 class="desc-title">Built for Institutions</h1>
+					<p class="desc">
+						Where you can generate time tables within some few clicks, Teachers and Students can view their respective time tables and save as PDF for later use.
+					</p>
+				</div>
+				
+				<div class='login-form-wrapper'>
+					<h1>Log In</h1>
+					<form method="post">
+						<p> 
+							{{ form.email.label }} <br>
+							{{ form.email(size=32, class_='text-field') }} <br>
+							{% for error in form.email.errors %}
+							<span style="color:red;">[ {{ error }} ]</span>
+							{% endfor %}
+						</p>
+
+						<p> 
+							{{ form.password.label }} <br>
+							{{ form.password(size=32, class_='text-field') }} <br>
+							{% for error in form.password.errors %}
+							<span style="color:red;">[ {{ error }} ]</span>
+							{% endfor %}
+						</p>
+
+						<p> 
+							{{ form.submit(class_='button') }}
+						</p>
+
+					</form>
+				</div>
+			</div>
+		{% endblock %}
+		</div>
+
+
+		<div class="footer">
+			<p>All Rights Reserved</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+
+.flex-container {
+	justify-content: start !important;
+       	align-items: start !important;
+}
+
+.flex-container .create-time-table-form {
+	color: #fff;
+	padding: 20px;
+	display: inline;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	bottom: 50px;
+}
+
+.flex-container .create-time-table-form * {
+	margin: 5px;
+}
+
+
+table {
+	text-align: center;	
+	border-collapse: collapse;
+}
+
+table thead tr {
+	background: gray;
+	color: #fff;
+}
+
+table td {
+	padding: 15px;
+}
+
+
+
+.table-container form * {
+	margin: 5px;
+}
+
+
+.aside .create-time-table-btn {
+	border: 4px solid darkblue;
+}
+
+

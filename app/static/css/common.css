@@ -1,0 +1,159 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body, html {
+	background: rgb(53, 57, 63);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+/* header section of the base.html page */
+
+.header, .footer {
+	background: rgb(0, 63, 143);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Roboto Slab', serif;
+	flex-basis: 60px;
+}
+
+.header {
+}
+
+.footer {
+	width: 100%;
+}
+
+/* main section of the base.html page */
+
+.container {
+	display: flex;
+	flex: auto;
+}
+
+/* aside section of the base.html page */
+
+.aside {
+	width: 300px;
+	background:rgb(204, 204, 204);
+	height: 680px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.aside a {
+	text-decoration: none;
+	color: #fff;
+	background: blue;
+	width: 280px;
+	height: 45px;
+	margin-bottom: 5px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.aside a:hover {
+	background: #0303bc;
+	font-size: 1.1em; 
+}
+
+/* admin main container box */
+
+.flex-container {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
+
+.flex-container .required-form-area {
+	margin-top: 20px;
+	display: flex;
+	padding: 20px 0;
+	width: 55%;
+	flex-wrap: wrap;
+	color: #fff;
+}
+
+.flex-container .required-form-area p {
+	flex: 0 0 50%;
+	display: flex;
+	justify-content: space-around;
+}
+
+
+/* drop-down menu */
+
+.drop-down {
+	height: 40px;
+	width: 100px;
+	outline: 0;
+	border: 2px solid gray;
+	border-radius: none;
+	font-size: .8em;
+}
+
+/* styling for all forms */
+
+.text-field {
+	height: 22px;
+	font-size: .8em;
+	outline: none;
+	margin-bottom: 20px;
+	border: 2px solid #d3d3d3;
+	padding: 2px;
+	padding-left: 4px;
+	color: rgba(44, 44, 44, .8);
+}
+
+.text-field:focus {
+	background: rgba(44, 44, 44, .8);
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.button {
+	height: 35px;
+	padding: 0px 20px;
+	background: steelblue;
+	color: #fff;
+	font-size: .8em;
+}
+
+
+.flex-container {
+	justify-content: flex-start;	
+	align-items: center;
+	justify-content: center !important;
+}
+
+.flex-container form.cus-form {
+	width: 80%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+	margin-top: 50px;
+}
+
+.flex-container p a.button {
+	text-decoration: none;
+	padding: 10px 20px;
+	margin: 10px;
+	border: 1px solid #fff;
+	position: relative;
+	right: 350px;
+	font-size: .8em;
+}
+
+.flex-container .messages .text {
+	background: #fff;
+}

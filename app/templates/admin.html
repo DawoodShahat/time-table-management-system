@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block link %}
+		<link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block aside %}
+	<a href="{{ url_for('adduser') }}" class='add-user-btn'>Add User</a>
+	<a href="{{ url_for('removeuser') }}" class='remove-user-btn'>Remove User</a>
+	<a href="{{ url_for('searchuser') }}" class='search-user-btn'>Search User</a>
+	<a href="{{ url_for('modifyuser') }}" class='modify-user-btn'>Modify User Credentials</a>
+	<a href="{{ url_for('createtimetable') }}" class='create-time-table-btn' >Create Time Table</a>
+	<a href="{{ url_for('viewtimetable') }}" class="view-time-table-btn">View Time Table</a>
+	<a href="{{ url_for('createsemester') }}" class="create-semester-btn">Create Semester</a>
+{% endblock %}
+
+{% block maincontent %}
+	<div id='flex-container' class='flex-container'>
+		<div style="color:#fff; margin:20px;">
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<ul style="list-style-type:none;">
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+		</div>
+		{% block adminarea %}
+		<div class='info-box'> Your are Logged in as an Administrator</div>
+		{% endblock %}
+	</div>
+{% endblock %}

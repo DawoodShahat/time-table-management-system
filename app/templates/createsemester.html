@@ -1,0 +1,33 @@
+{% extends "admin.html" %}
+
+{% block link %}
+	<link href="{{ url_for('static', filename='css/createsemester.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block adminarea %}
+	<form class='cus-form' method="post">
+		<p>
+			{{ form.semester_no.label }} : {{ form.semester_no(class_='text-field') }}
+			{% for error in form.semester_no.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.batch.label }} : {{ form.batch(class_='text-field') }}
+			{% for error in form.batch.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.program.label }} : {{ form.program(class_='text-field') }}
+			{% for error in form.program.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.create_semester(class_='button') }}
+		</p>
+	</form>
+{% endblock %}
+

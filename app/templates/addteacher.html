@@ -1,0 +1,33 @@
+{% extends "adduser.html" %}
+
+{% block formarea %}
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.username.label }} : {{ form.username(class_='text-field') }}
+		{% for error in form.username.errors %}
+		<span style="color:red">[{{ error }}]</span>
+		{% endfor %}
+	</p>
+
+	<p>
+		{{ form.email.label }} : {{ form.email(class_='text-field') }}
+		{% for error in form.email.errors %}
+		<span style="color:red">[{{ error }}]</span>
+		{% endfor %}
+	</p>
+	<p>
+		{{ form.password_hash.label }} : {{ form.password_hash(class_='text-field') }}
+		{% for error in form.password_hash.errors %}
+		<span style="color:red">[{{ error }}]</span>
+		{% endfor %}
+	</p>
+	<p>
+		{{ form.password_hash_confirm.label }} : {{ form.password_hash_confirm(class_='text-field') }}
+		{% for error in form.password_hash_confirm.errors %}
+		<span style="color:red">[{{ error }}]</span>
+		{% endfor %}
+	</p>
+	<p>
+		{{ form.addteacher(class_='button') }}
+	</p>
+{% endblock %}

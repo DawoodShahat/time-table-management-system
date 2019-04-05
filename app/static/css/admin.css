@@ -1,0 +1,13 @@
+
+.info-box {
+	height: 50px;
+	width: 300px;
+	background: #c4b7a6;
+	color: #7a5213;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+}
+

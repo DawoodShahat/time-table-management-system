@@ -1,0 +1,119 @@
+{% extends "admin.html" %}
+
+{% block link %}
+	<link href="{{ url_for('static', filename='css/viewtimetable.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block script %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		window.onload = function(){
+
+			var tableDataElement = document.getElementById('table-container');
+
+
+			var dataTester = { 
+				"class-1" : "8:30am-10:00am",
+				"class-2" : "10:15am-11:45am",
+				"class-3" : "12:00pm-1:30pm",
+				"class-4" : "2:00pm-3:30pm"
+			};
+
+			var semesterNo = document.getElementById('select_semester');
+			var semesterValue = {};
+			semesterNo.addEventListener('change', function(e){
+				semesterValue.value = e.target.value;
+			});
+
+			var retrieveButton = document.getElementById('retrieve');
+			retrieveButton.addEventListener('click', retrieveData);
+
+			function retrieveData(event){
+
+				$.get('/admin/gettabledata', function(tableData){
+					tableDataElement.innerHTML = tableData;
+				});
+
+				$.post('/updateview', semesterValue).done(function(response){
+					response.forEach(function(data){
+						var box = document.querySelector('form .table-container .' + data.day + ' .' + data.timing);
+						box.style.fontSize = '0.8em';
+						box.style.color = '#fff';
+						box.innerHTML = '<p>' + data.subject + '<br>' + data.room + '<br>' + data.teacher + '</p>';
+					});
+				});
+			}
+
+		}
+	</script>
+{% endblock %}
+
+
+
+{% block adminarea %}
+	<form class='cus-form' method="post">
+		<p>
+			{{ form.select_semester(class_='drop-down button') }}
+		</p>
+		<p>
+		<button id="retrieve" class="button" style="margin-top:20px;" type="button">Retrieve Table</button>
+		</p>
+		<div id='table-container' class='table-container'>
+		{% block table %}
+			<table border="1">
+				<thead>
+					<tr>
+						<td></td>
+						<td>8:30am - 10:00am</td>
+						<td>10:15am - 11:45am</td>
+						<td>12:00pm - 1:30pm</td>
+						<td>2:00pm - 3:30pm</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="monday">
+						<td>Monday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+					<tr class="tuesday">
+						<td>Tuesday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+					<tr class="wednesday">
+						<td>Wednesday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+					<tr class="thursday">
+						<td>Thursday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+					<tr class="friday">
+						<td>Friday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+					</tr>
+				</tfoot>
+			</table>
+		{% endblock %}
+		</div>
+	</form>
+{% endblock %}
+

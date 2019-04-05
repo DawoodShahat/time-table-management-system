@@ -1,0 +1,33 @@
+.table-container {
+	margin-top: 20px;
+}
+
+table {
+	text-align: center;	
+	border-collapse: collapse;
+}
+
+table thead tr {
+	background: gray;
+	color: #fff;
+}
+
+table td {
+	padding: 20px;
+}
+
+
+
+.table-container form * {
+	margin: 5px;
+}
+
+
+.aside .view-time-table-btn {
+	border: 4px solid darkblue;
+}
+
+.flex-container form.cus-form {
+	margin-top: 0px !important;
+}
+

@@ -1,0 +1,16 @@
+{% extends "searchuser.html" %}
+
+{% block formarea %}
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.searchname.label }} : {{ form.searchname(class_='text-field') }}
+		{% for error in form.searchname.errors %}
+		<span style="color:red">[{{ error }}]</span>
+		{% endfor %}
+	</p>
+
+	<p>
+		{{ form.search(class_='button btn-down') }}
+	</p>
+{% endblock %}
+

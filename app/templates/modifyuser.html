@@ -1,0 +1,17 @@
+{% extends "admin.html" %}
+
+{% block link %}
+	<link href="{{ url_for('static', filename='css/modifyuser.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block adminarea %}
+	<p>
+		<a class="button" href="{{ url_for('modifystudent') }}">Modify Student</a>
+		<a class="button" href="{{ url_for('modifyteacher') }}">Modify Teacher</a>
+	</p>
+	<form class='cus-form' method="post">
+		{% block formarea %}		
+		{% endblock %}
+	</form>
+{% endblock %}
+

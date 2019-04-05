@@ -1,0 +1,12 @@
+
+.aside  .add-user-btn {
+	border: 4px solid darkblue;
+}
+
+.flex-container form {
+	width: 80%;
+	height: 70%;
+	display: flex;
+	flex-direction: column;
+
+}

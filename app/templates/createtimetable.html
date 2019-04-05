@@ -1,0 +1,181 @@
+{% extends "admin.html" %}
+
+{% block script %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		window.onload = function(){
+				
+			var data = {semester: "None", subject: "None", teacher: "None", day: "None", room: "None", timing: "None"};
+
+			var dataTester = { 
+				"class-1" : "8:30am-10:00am",
+				"class-2" : "10:15am-11:45am",
+				"class-3" : "12:00pm-1:30pm",
+				"class-4" : "2:00pm-3:30pm"
+			};
+
+
+			var selectSemester = document.querySelector('form .semester');		
+			selectSemester.addEventListener('change', semesterSelected);
+
+			function semesterSelected(event){
+				data.semester = event.target.value;		
+			}	
+
+			var pickSubject = document.querySelector('form .subject-name');
+			pickSubject.addEventListener('change', subjectSelected);
+
+			function subjectSelected(event){
+				data.subject = event.target.value;
+			}
+
+			var teacherName = document.querySelector('form .teacher');
+			teacherName.addEventListener('change', setTeacherName);
+
+			function setTeacherName(event){
+				data.teacher = event.target.value;
+			}
+
+			var day = document.querySelector('form .day');
+			day.addEventListener('change', setDay);
+
+			function setDay(event){
+				data.day = event.target.value;
+			}
+
+			var roomNo = document.querySelector('form .room-no');
+			roomNo.addEventListener('change', setRoomNo);
+
+			function setRoomNo(event){
+				data.room = event.target.value;
+			}
+
+			var timing = document.querySelector('form .timing');
+			timing.addEventListener('change', setTiming);
+
+			function setTiming(event){
+				data.timing = event.target.value;
+			}
+
+			var addButton = document.querySelector('form .button');
+			addButton.addEventListener('click', add);
+
+			function add(event){
+				$.post('/updatetable', data).done(function(response){
+
+				});
+
+				var box = document.querySelector('form .table-container .' + data.day + ' .' + data.timing);
+				box.style.fontSize = '0.8em';
+				box.style.color = '#fff';
+				box.innerHTML = '<p>' + data.subject + '<br>' + data.room + '<br>' + data.teacher + '</p>';
+			}
+		}
+	</script>
+{% endblock %}
+
+{% block link %}
+	<link href="{{ url_for('static', filename='css/createtimetable.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block adminarea %}
+	<form action="" class='create-time-table-form' method="">
+		<p>
+			{{ form.select_semester.label }} : {{ form.select_semester(class_='text-field semester') }}
+			{% for error in form.select_semester.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.pick_subject.label }} : {{ form.pick_subject(class_='text-field subject-name') }}
+			{% for error in form.pick_subject.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.teacher_name.label }} : {{ form.teacher_name(class_='text-field teacher') }}
+			{% for error in form.teacher_name.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.day.label }} : {{ form.day(class_='text-field day') }}
+			{% for error in form.day.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.room_no.label }} : {{ form.room_no(class_='text-field room-no') }}
+			{% for error in form.room_no.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.timing.label }} : {{ form.timing(class_='text-field timing') }}
+			{% for error in form.timing.errors %}
+			<span style="color:red">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			<button class="button" type="button">Add Subject To</button>
+		</p>
+		<div class='table-container'>
+			<table border="1">
+				<thead>
+					<tr>
+						<td></td>
+						<td>8:30am - 10:00am</td>
+						<td>10:15am - 11:45am</td>
+						<td>12:00pm - 1:30pm</td>
+						<td>2:00pm - 3:30pm</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="monday">
+						<td>Monday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+					<tr class="tuesday">
+						<td>Tuesday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+					<tr class="wednesday">
+						<td>Wednesday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+					<tr class="thursday">
+						<td>Thursday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+					<tr class="friday">
+						<td>Friday</td>
+						<td class="class-1"></td>
+						<td class="class-2"></td>
+						<td class="class-3"></td>
+						<td class="class-4"></td>
+					</tr>
+
+				</tbody>
+				<tfoot>
+					<tr>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+	</form>
+{% endblock %}
+
